@@ -39,13 +39,9 @@ Entre na pasta desejada e rode:
 ```bash
 npm install
 npm run dev
-Exemplo:
+```
 
-bash
-Copiar código
-cd 01-css-global
-npm install
-npm run dev
+Abra em http://localhost:5173
 
 Organização
 csharp

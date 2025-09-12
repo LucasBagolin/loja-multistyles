@@ -18,7 +18,6 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const isDisabled = disabled || loading;
 
-  // mapeia a variant para a classe do módulo
   const variantClass =
     variant === 'outline' ? styles.outline :
     variant === 'ghost'   ? styles.ghost   :

@@ -1,8 +1,3 @@
-/* =========
-   Navbar (CSS Modules)
-   ========= */
-
-/* Container fixo (sticky) */
 .navbar {
   position: sticky;
   top: 0;
@@ -12,7 +7,6 @@
   box-shadow: var(--shadow);
 }
 
-/* Skip link — aparece quando focado (foco global já está no index.css) */
 .skipLink {
   position: absolute;
   left: -9999px;
@@ -27,7 +21,6 @@
   border-radius: var(--r-sm);
 }
 
-/* Layout interno */
 .navInner {
   max-width: 1200px;
   margin: 0 auto;
@@ -38,21 +31,18 @@
   gap: var(--sp-4);
 }
 
-/* Logo */
 .logo {
   color: var(--fg);
   text-decoration: none;
   font-size: 18px;
 }
 
-/* Ações (toggle de tema + carrinho) */
 .navActions {
   display: flex;
   align-items: center;
   gap: var(--sp-3);
 }
 
-/* Botão de tema */
 .themeToggle {
   background: transparent;
   border: 1px solid var(--border);
@@ -64,7 +54,6 @@
 .themeToggle:hover { transform: translateY(-1px); }
 .themeToggle:active { transform: translateY(0); }
 
-/* Carrinho + badge */
 .cart {
   position: relative;
   display: inline-flex;

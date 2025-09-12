@@ -1,4 +1,3 @@
-/* Base */
 .button {
   font: inherit;
   border-radius: var(--r-sm);
@@ -17,7 +16,6 @@
   opacity: .5; cursor: not-allowed; transform: none;
 }
 
-/* Variantes */
 .solid {
   background: var(--accent);
   color: var(--accent-fg);

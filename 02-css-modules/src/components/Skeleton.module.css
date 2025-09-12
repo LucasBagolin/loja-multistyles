@@ -6,7 +6,6 @@
   padding: var(--sp-4);
 }
 
-/* blocos */
 .image,
 .titleLine,
 .price,
@@ -21,7 +20,6 @@
   border-radius: var(--r-sm);
 }
 
-/* dark mode */
 :global(body.dark) .image,
 :global(body.dark) .titleLine,
 :global(body.dark) .price,
@@ -33,20 +31,17 @@
   );
 }
 
-/* dimensões para manter o layout do card */
 .image { aspect-ratio: 1 / 1; }
 .titleLine { height: 14px; margin-top: var(--sp-3); border-radius: 999px; }
 .short { width: 60%; }
 .price { height: 18px; margin-top: var(--sp-3); border-radius: 999px; width: 40%; }
 .actions { height: 38px; margin-top: var(--sp-3); }
 
-/* animação */
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 
-/* respeito a prefers-reduced-motion (reforço local) */
 @media (prefers-reduced-motion: reduce){
   .image, .titleLine, .price, .actions {
     animation-duration: .01ms !important;

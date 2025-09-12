@@ -4,21 +4,18 @@
   gap: var(--sp-5);
 }
 
-/* 481–768px: 2 colunas */
 @media (min-width: 481px) {
   .productGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* 769–1024px: 3 colunas */
 @media (min-width: 769px) {
   .productGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* >=1025px: 4 colunas */
 @media (min-width: 1025px) {
   .productGrid {
     grid-template-columns: repeat(4, 1fr);

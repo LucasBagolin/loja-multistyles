@@ -1,69 +1,43 @@
-# React + TypeScript + Vite
+# Versão 02 – CSS Modules
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta versão implementa a tela usando **CSS Modules**, isolando os estilos por componente.
 
-Currently, two official plugins are available:
+## Estrutura
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `src/`
+  - `App.tsx` → junta Navbar, Grid e ProductCards
+  - `components/` → `Navbar`, `ProductCard`, `Button`, `Skeleton` (cada um com seu `.module.css`)
+  - `hooks/useTheme.ts` → alternância claro/escuro com persistência
+  - `data/products.ts` → 6 produtos de exemplo
+  - `types.ts` → tipagem dos produtos
 
-## Expanding the ESLint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Navbar fixa** com logo, botão de tema (persistente) e badge de carrinho
+- **Grid responsiva**:
+  - ≤480px → 1 col
+  - 481–768px → 2 cols
+  - 769–1024px → 3 cols
+  - ≥1025px → 4 cols
+- **Cards** com:
+  - imagem 1:1 (lazy loading)
+  - título 2 linhas (ellipsis)
+  - preço em BRL
+  - rating com estrelas
+  - tag “Novo” ou “Promo”
+  - botão “Adicionar” (variantes solid/outline/ghost via classes do módulo)
+- **Skeleton loader** sem layout shift
+- **Dark mode** aplicado a cores, sombras e bordas
+- **Acessibilidade**: foco visível, `aria-*`, skip link
+- **Transições** entre 150–250ms (transform/opacity)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Rodar
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Dentro da pasta `02-css-modules/`:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Abra em http://localhost:5173
