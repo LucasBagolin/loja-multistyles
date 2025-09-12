@@ -1,0 +1,38 @@
+/* Base */
+.button {
+  font: inherit;
+  border-radius: var(--r-sm);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease,
+              background .2s ease, color .2s ease, border-color .2s ease;
+  background: var(--surface);
+  color: var(--fg);
+}
+.button:hover { transform: translateY(-1px); }
+.button:active { transform: translateY(0); }
+.button[disabled],
+.button[aria-disabled="true"] {
+  opacity: .5; cursor: not-allowed; transform: none;
+}
+
+/* Variantes */
+.solid {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: var(--accent);
+}
+.solid:hover { filter: brightness(1.05); }
+
+.outline {
+  background: transparent;
+  color: var(--fg);
+  border-color: var(--fg);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--fg);
+  border-color: transparent;
+}

@@ -1,0 +1,89 @@
+/* =========
+   Navbar (CSS Modules)
+   ========= */
+
+/* Container fixo (sticky) */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+/* Skip link — aparece quando focado (foco global já está no index.css) */
+.skipLink {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+}
+.skipLink:focus {
+  left: var(--sp-4);
+  top: var(--sp-4);
+  background: var(--accent);
+  color: var(--accent-fg);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--r-sm);
+}
+
+/* Layout interno */
+.navInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--sp-3) var(--sp-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+/* Logo */
+.logo {
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* Ações (toggle de tema + carrinho) */
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+/* Botão de tema */
+.themeToggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--r-xs);
+  padding: var(--sp-2) var(--sp-3);
+  cursor: pointer;
+  transition: transform .15s ease, opacity .15s ease, background .2s ease, color .2s ease, border-color .2s ease;
+}
+.themeToggle:hover { transform: translateY(-1px); }
+.themeToggle:active { transform: translateY(0); }
+
+/* Carrinho + badge */
+.cart {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  text-decoration: none;
+  color: var(--fg);
+}
+
+.cartBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  font-size: 12px;
+  font-weight: 600;
+}
