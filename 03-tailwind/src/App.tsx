@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { Navbar } from "./components/Navbar";
+import { ProductCard } from "./components/ProductCard";
+import { Skeleton } from "./components/Skeleton";
+import { products } from "./data/products";
+import type { Product } from "./types";
+import "./index.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [cart, setCart] = React.useState<Product[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const t = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(t);
+  }, []);
+
+  const handleAdd = (p: Product) => setCart((prev) => [...prev, p]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <Navbar cartCount={cart.length} />
 
-export default App
+      <main id="conteudo" tabIndex={-1} className="max-w-[1200px] mx-auto px-4 pb-6 pt-5">
+        <h1 className="visually-hidden">Lista de produtos</h1>
+
+        {/* Grid responsiva com os breakpoints exatos:
+            base (≤480): 1 col
+            bp2 (≥481):  2 cols
+            bp3 (≥769):  3 cols
+            bp4 (≥1025): 4 cols */}
+        <section
+          aria-label="Produtos"
+          className="grid grid-cols-1 gap-5 bp2:grid-cols-2 bp3:grid-cols-3 bp4:grid-cols-4"
+        >
+          {loading
+            ? Array.from({ length: 6 }).map((_, i) => (
+                <Skeleton key={i} aria-label="Carregando produto" />
+              ))
+            : products.map((p) => (
+                <ProductCard
+                  key={p.id}
+                  product={p}
+                  onAdd={handleAdd}
+                  addDisabled={false}
+                  addLoading={false}
+                />
+              ))}
+        </section>
+      </main>
+    </>
+  );
+}
